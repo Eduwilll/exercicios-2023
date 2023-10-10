@@ -25,4 +25,20 @@ class Person {
     $this->institution = $institution;
   }
 
+
+  /**
+   * Get person name.
+   */ 
+  public function getName()
+  {
+    return $this->name;
+  }
+
+  /**
+   * Get person institution.
+   */ 
+  public function getInstitution()
+  {
+    return $this->institution;
+  }
 }
