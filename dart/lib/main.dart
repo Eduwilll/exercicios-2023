@@ -66,49 +66,70 @@ class _CalendarState extends State<Calendar> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'Programação',
-            ),
-            const Text(
-              'Nov',
-            ),
-            const Text(
-              '2023',
-            ),
-            OutlinedButton(
-              onPressed: () {
-                _changeDate(DateTime(2023, 11, 26));
-              },
-              child: Text(
-                '26',
-                style: Theme.of(context).textTheme.headlineMedium,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const Text(
+                'Programação',
               ),
             ),
-            OutlinedButton(
-              onPressed: () {
-                _changeDate(DateTime(2023, 11, 28));
-              },
-              child: Text(
-                '28',
-                style: Theme.of(context).textTheme.headlineMedium,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const Text(
+                'Nov',
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const Text(
+                '2023',
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: OutlinedButton(
+                onPressed: () {
+                  _changeDate(DateTime(2023, 11, 26));
+                },
+                child: Text(
+                  '26',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: OutlinedButton(
+                onPressed: () {
+                  _changeDate(DateTime(2023, 11, 28));
+                },
+                child: Text(
+                  '28',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ),
             ),
             if (_currentDate.day == 26)
-              OutlinedButton(
-                  onPressed: () {
-                    setState(() {
-                      _clicked = true;
-                    });
-                  },
-                  child: const Text('Mesa redonda de 07:00 até 08:00')),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: OutlinedButton(
+                    onPressed: () {
+                      setState(() {
+                        _clicked = true;
+                      });
+                    },
+                    child: const Text('Mesa redonda de 07:00 até 08:00')),
+              ),
             if (_currentDate.day == 28)
-              OutlinedButton(
-                  onPressed: () {
-                    setState(() {
-                      _clicked = true;
-                    });
-                  },
-                  child: const Text('Palestra de 09:30 até 10:00')),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: OutlinedButton(
+                    onPressed: () {
+                      setState(() {
+                        _clicked = true;
+                      });
+                    },
+                    child: const Text('Palestra de 09:30 até 10:00')),
+              ),
             if (_currentDate.day == 26 && _clicked) const Activity(),
           ],
         ),
@@ -142,17 +163,21 @@ class _ActivityState extends State<Activity> {
         const Text('Sthepen William Hawking'),
         const Text('Maputo'),
         const Text('Astrofísica e Cosmologia'),
-        ElevatedButton.icon(
-          onPressed: () {
-            setState(() {
-              _favorited = !_favorited;
-            });
-          },
-          icon: _favorited
-              ? const Icon(Icons.star)
-              : const Icon(Icons.star_outline),
-          label: Text(
-              _favorited ? 'Remover da sua agenda' : 'Adicionar à sua agenda'),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton.icon(
+            onPressed: () {
+              setState(() {
+                _favorited = !_favorited;
+              });
+            },
+            icon: _favorited
+                ? const Icon(Icons.star)
+                : const Icon(Icons.star_outline),
+            label: Text(_favorited
+                ? 'Remover da sua agenda'
+                : 'Adicionar à sua agenda'),
+          ),
         )
       ]),
     );
