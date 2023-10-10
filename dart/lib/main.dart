@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:from_css_color/from_css_color.dart';
 
 void main() {
   runApp(const ChuvaDart());
@@ -41,9 +42,25 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Chuva ❤️ Flutter'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100.0),
+        child: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          flexibleSpace: Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: const Text(
+                'Chuva ❤️ Flutter',
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.red,
+                  fontFamily: 'NotoEmoji', // Use the NotoColorEmoji font
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
       body: Center(
         child: Column(
