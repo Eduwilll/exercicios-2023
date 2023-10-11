@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    /* fonts */
+    --font-quicksand: Quicksand;
+    --font-roboto: Roboto;
+    --font-font-awesome-5-free: "Font Awesome 5 Free";
+    --font-material-icons: "Material Icons";
+    --font-segoe-ui: "Segoe UI";
+
+    /* font sizes */
+    --font-size-mini: 15px;
+    --font-size-sm: 14px;
+    --font-size-xs: 12px;
+    --font-size-xl: 20px;
+    --font-size-base: 16px;
+
+    /* Colors */
+    --grayscale-white: #fff;
+    --color-dimgray-100: #725c5c;
+    --color-dimgray-200: #5c5c5c;
+    --color-dimgray-300: #4e4e4e;
+    --color-dimgray-400: #4d4d4d;
+    --color-gainsboro: #e7e7e7;
+    --color-seashell: #fdf1eb;
+    --color-darkslategray: #333;
+    --danger: #f85959;
+    --color-coral: #ed7839;
+    --color-gray-100: #757575;
+    --color-gray-200: rgba(0, 0, 0, 0);
+    --color-whitesmoke: #ececec;
+    --color-darkgray: #ada0a0;
+
+    --orange-gradient: linear-gradient(180deg, #ffb354, #ee7a3a);
+
+
+    /* Border radiuses */
+    --br-10xs: 3px;
+    --br-9xs: 4px;
+    --br-8xs: 5px;
+    --br-12xs: 1px;
+    --br-11xs: 2px;
+}
+
+* {
+    box-sizing: border-box;
+    
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
