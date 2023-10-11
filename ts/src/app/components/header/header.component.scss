@@ -1,0 +1,155 @@
+.header1 {
+
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background-color: var(--color-seashell);
+    width: 100%;
+    height: 68px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+.anais-do-13,
+.issn-1234-5678, .anais-do-simpsio {
+    
+    color: var(--color-dimgray-100);
+    font-family: var(--font-roboto);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.email,
+.imagem-icon {
+    position: absolute;
+    top: 19px;
+    left: 0;
+}
+
+.imagem-icon {
+    border-radius: 50%;
+    top: 4.95%;
+    right: 0.92%;
+    bottom: 4.95%;
+    left: 84.08%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.b,
+.masterbasic {
+    position: absolute;
+    bottom: 0;
+}
+
+.masterbasic {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 10px;
+    background-color: var(--danger);
+    overflow: hidden;
+}
+
+.b {
+    right: 3px;
+    letter-spacing: -0.02em;
+}
+
+.notification-badge {
+    position: absolute;
+    height: 35.29%;
+    width: 5.94%;
+    top: 0;
+    right: 0;
+    bottom: 64.71%;
+    left: 94.06%;
+    text-align: left;
+    font-size: 10px;
+    color: var(--grayscale-white);
+    font-family: var(--font-roboto);
+}
+
+.bem-vindo,
+.login {
+    position: absolute;
+    top: 0;
+    left: 91px;
+    font-size: var(--font-size-sm);
+    
+}
+
+.login {
+    
+    top: 17px;
+    left: 908px;
+    width: 202px;
+    height: 34px;
+    text-align: right;
+    font-size: var(--font-size-xs);
+    color: var(--color-darkslategray);
+    font-family: var(--font-quicksand);
+}
+
+.language-image-icon {
+    position: absolute;
+    top: 5px;
+    left: 9px;
+    width: 22px;
+    height: 21px;
+    object-fit: cover;
+}
+
+.language-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--br-10xs);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    width: 97px;
+    height: 34px;
+}
+
+.dropdown-icon {
+    position: absolute;
+    top: 15.5px;
+    left: 77px;
+    width: 8px;
+    height: 5.33px;
+}
+
+.boto-idiomas,
+.pt-br {
+    position: absolute;
+    top: 8px;
+    left: 31px;
+}
+
+.boto-idiomas {
+    top: 17px;
+    left: 789px;
+    width: 97px;
+    height: 34px;
+    color: var(--color-darkslategray);
+    font-family: var(--font-quicksand);
+}
+
+
+
+.header {
+    top: 0;
+    left: 220px;
+    width: 1146px;
+    height: 68px;
+    margin-left: 200px;
+
+}
