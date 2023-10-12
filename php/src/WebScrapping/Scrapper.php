@@ -32,6 +32,7 @@ class Scrapper
             $titleElement = $anchor->getElementsByTagName('h4')->item(0);
             $title = $titleElement ? $titleElement->textContent : null;;
 
+            // Extract Type
             // Get the first <div> element with class 'tags' and 'mr-sm'
             $typeElement = $anchor->getElementsByTagName('div');
             $type = null;
