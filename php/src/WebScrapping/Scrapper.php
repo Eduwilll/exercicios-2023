@@ -1,6 +1,5 @@
 <?php
 
-// Scrapper.php
 namespace Chuva\Php\WebScrapping;
 
 use Box\Spout\Writer\Common\Creator\WriterEntityFactory;
@@ -10,58 +9,57 @@ use Chuva\Php\WebScrapping\Entity\Person;
 /**
  * Does the scrapping of a webpage.
  */
-class Scrapper
-{
+class Scrapper {
 
     /**
-     * @param \DOMDocument $dom
+     * @param \DOMDocument The DOMDocument object.
      * 
-     * @return array
+     * @return array The result as an array.
      */
-    public function scrap(\DOMDocument $dom): array
-    {
+    public function scrap(\DOMDocument $dom): array {
+        
         $data = [];
-
-        // Select all <a> elements with class 'paper-card'.
-        $anchors = $dom->getElementsByTagName('a');
+        $anchors = $dom->getElementsByTagName('a'); // Select all <a> elements with class 'paper-card'. 
 
         foreach ($anchors as $anchor) {
             // Extract ID from href.
             $href = $anchor->getAttribute('href');
             preg_match('/\/(\d+)$/', $href, $matches);
-            $id = isset($matches[1]) ? $matches[1] : null;
+            $id = isset($matches[1]) ? $matches[1] : NULL;
 
             // Extract title.
             $titleElement = $anchor->getElementsByTagName('h4')->item(0);
-            $title = $titleElement ? $titleElement->textContent : null;;
+            $title = $titleElement ? $titleElement->textContent : NULL;;
 
             // Extract Type.
             // Get the first <div> element with class 'tags' and 'mr-sm'.
             $typeElement = $anchor->getElementsByTagName('div');
-            $type = null;
+            $type = NULL;
+
             foreach ($typeElement as $div) {
                 $classAttribute = $div->getAttribute('class');
 
-                if (strpos($classAttribute, 'tags') !== false && strpos($classAttribute, 'mr-sm') !== false) {
+                if (strpos($classAttribute, 'tags') !== FALSE && strpos($classAttribute, 'mr-sm') !== FALSE) {
                     // This is the <div> with class 'tags' and 'mr-sm'.
                     $type = $div->nodeValue;
-                    // "Value of <div class=\"tags mr-sm\">: $type";
+                    // "Value of <div class=\"tags mr-sm\">: $type";.
                     break;
                 }
             }
-
 
             // Extract authors and author institutions.
             $authors = $anchor->getElementsByTagName('span');
             $authorNames = [];
             $authorInstitutions = [];
+
             foreach ($authors as $author) {
                 $authorNames[] = $author->textContent;
                 $authorInstitutions[] = $author->getAttribute('title');
             }
 
             // Check if essential properties are valid.
-            if ($id !== null && $title !== null && !empty($authorNames)) {
+            if ($id !== NULL && $title !== NULL && !empty($authorNames)) {
+
                 // Create Paper instance and add to data array.
                 $paperData = new Paper(
                     $id,
@@ -79,18 +77,16 @@ class Scrapper
         }
 
         return $data;
-    }
-    
 
-    
+    }
+
     /**
      * @param array  $data
      * @param string $filename
      * 
      * @return [type]
      */
-    public function exportToXlsx(array $data, string $filename)
-    {
+    public function exportToXlsx(array $data, string $filename) {
         $writer = WriterEntityFactory::createXLSXWriter();
         $writer->openToFile($filename);
 
