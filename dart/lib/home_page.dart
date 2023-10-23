@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'activity.dart'; // Importe a classe Activity
-import 'dart:convert';
-import 'package:flutter/services.dart';
-import 'dataModel.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dadosModel.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,12 +9,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Activity> activities = [];
+  List<Data> activities = [];
 
   @override
   void initState() {
     super.initState();
-    // Carregue e analise o JSON no initState
     loadActivitiesFromJson();
   }
 
@@ -29,18 +26,11 @@ class _HomePageState extends State<HomePage> {
 
       if (response.statusCode == 200) {
         final jsonData = response.body;
-        final dynamic decodedData = json.decode(jsonData);
+        final decodedData = DataModel.fromJson(json.decode(jsonData));
 
-        if (decodedData is Map<String, dynamic> &&
-            decodedData.containsKey('data')) {
-          final List<dynamic> activityData = decodedData['data'];
-          setState(() {
-            activities = activityData
-                .whereType<Map<String, dynamic>>() // Filter out non-maps
-                .map((item) => Activity.fromJson(item))
-                .toList();
-          });
-        }
+        setState(() {
+          activities = decodedData.data;
+        });
       } else {
         print('Failed to load JSON data. Status code: ${response.statusCode}');
       }
@@ -74,19 +64,22 @@ class _HomePageState extends State<HomePage> {
                         InkWell(
                           onTap: () {},
                           child: Text(
-                            activity.start + activity.end,
+                            '${activity.start ?? 'Start Date'} - ${activity.end ?? 'End Date'}',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 22),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                         Text(
-                          activity.title,
+                          activity.title?.ptBr ?? 'Title not available',
                           style: TextStyle(color: Colors.grey.shade600),
                         ),
-                        if (activity.people.isNotEmpty)
-                          Text(activity.people[0])
+                        if (activity.people != null &&
+                            activity.people.isNotEmpty)
+                          Text(activity.people[0]?.name ?? 'No name')
                         else
-                          Text('')
+                          Text('No people data')
                       ],
                     ),
                   ],
