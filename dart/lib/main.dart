@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:from_css_color/from_css_color.dart';
+// Importe services.dart para carregar o arquivo JSON
+import 'home_page.dart';
 
 void main() {
   runApp(const ChuvaDart());
@@ -8,7 +9,6 @@ void main() {
 class ChuvaDart extends StatelessWidget {
   const ChuvaDart({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,169 +17,7 @@ class ChuvaDart extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Calendar(),
-    );
-  }
-}
-
-class Calendar extends StatefulWidget {
-  const Calendar({super.key});
-
-  @override
-  State<Calendar> createState() => _CalendarState();
-}
-
-class _CalendarState extends State<Calendar> {
-  DateTime _currentDate = DateTime(2023, 11, 26);
-  bool _clicked = false;
-
-  void _changeDate(DateTime newDate) {
-    setState(() {
-      _currentDate = newDate;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100.0),
-        child: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          flexibleSpace: Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: const Text(
-                'Chuva ❤️ Flutter',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.red,
-                  fontFamily: 'NotoEmoji', // Use the NotoColorEmoji font
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: const Text(
-                'Programação',
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: const Text(
-                'Nov',
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: const Text(
-                '2023',
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: OutlinedButton(
-                onPressed: () {
-                  _changeDate(DateTime(2023, 11, 26));
-                },
-                child: Text(
-                  '26',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: OutlinedButton(
-                onPressed: () {
-                  _changeDate(DateTime(2023, 11, 28));
-                },
-                child: Text(
-                  '28',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
-            ),
-            if (_currentDate.day == 26)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: OutlinedButton(
-                    onPressed: () {
-                      setState(() {
-                        _clicked = true;
-                      });
-                    },
-                    child: const Text('Mesa redonda de 07:00 até 08:00')),
-              ),
-            if (_currentDate.day == 28)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: OutlinedButton(
-                    onPressed: () {
-                      setState(() {
-                        _clicked = true;
-                      });
-                    },
-                    child: const Text('Palestra de 09:30 até 10:00')),
-              ),
-            if (_currentDate.day == 26 && _clicked) const Activity(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Activity extends StatefulWidget {
-  const Activity({super.key});
-
-  @override
-  State<Activity> createState() => _ActivityState();
-}
-
-class _ActivityState extends State<Activity> {
-  bool _favorited = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.inversePrimary,
-      child: Column(children: [
-        Text(
-          'Activity title',
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
-        const Text('A Física dos Buracos Negros Supermassivos'),
-        const Text('Mesa redonda'),
-        const Text('Domingo 07:00h - 08:00h'),
-        const Text('Sthepen William Hawking'),
-        const Text('Maputo'),
-        const Text('Astrofísica e Cosmologia'),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton.icon(
-            onPressed: () {
-              setState(() {
-                _favorited = !_favorited;
-              });
-            },
-            icon: _favorited
-                ? const Icon(Icons.star)
-                : const Icon(Icons.star_outline),
-            label: Text(_favorited
-                ? 'Remover da sua agenda'
-                : 'Adicionar à sua agenda'),
-          ),
-        )
-      ]),
+      home: HomePage(), // Defina o widget principal aqui
     );
   }
 }
